@@ -32,10 +32,10 @@ export default function Login() {
         "http://localhost:4001/api/users/login",
         formData,
         {
-          withCredentials: true,
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          withCredentials: true,
         }
       );
 

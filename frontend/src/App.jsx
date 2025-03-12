@@ -23,6 +23,9 @@ function App() {
     location.pathname
   );
 
+  const token = localStorage.getItem("jwt");
+  console.log(token);
+
   return (
     <div>
       {!hideNavbarFooter && <Navbar />}

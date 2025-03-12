@@ -10,8 +10,8 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // let token = localStorage.getItem("jwt");
-        // console.log(token);
+        let token = localStorage.getItem("jwt");
+        console.log(token);
         // if (token) {}
         const res = await axios.get(
           "http://localhost:4001/api/users/my-profile",
