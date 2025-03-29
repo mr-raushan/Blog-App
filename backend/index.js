@@ -16,9 +16,15 @@ const MONGO_URL = process.env.MONGO_URI;
 //middleware
 app.use(express.json());
 app.use(cookieParser());
+
+const allowedOrigins = [
+  "http://localhost:5173", //local react
+  process.env.CLIENT_URL, //deployed frontend
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })

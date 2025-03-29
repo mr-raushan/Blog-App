@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../utils";
 
 export default function BlogDetail() {
   const { id } = useParams();
@@ -10,12 +11,9 @@ export default function BlogDetail() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:4001/api/blogs/single-blog/${id}`,
-          {
-            withCredentials: true,
-          }
-        );
+        const res = await axios.get(`${API_URL}/api/blogs/single-blog/${id}`, {
+          withCredentials: true,
+        });
         console.log("blog detail", res.data);
         if (res.data.success) {
           toast.success("blog detail page");

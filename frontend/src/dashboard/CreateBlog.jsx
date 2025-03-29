@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { API_URL } from "../utils";
 
 export default function CreateBlog() {
   const [createBlog, setCreateBlog] = useState([]);
@@ -34,16 +35,12 @@ export default function CreateBlog() {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:4001/api/blogs/create",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(`${API_URL}/api/blogs/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
       if (res.data.success) {
         toast.success("Blog created successfully");
         setCreateBlog(res.data);

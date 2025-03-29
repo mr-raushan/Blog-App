@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { API_URL } from "../utils";
 
 export default function MyBlog() {
   const [myBlog, setMyBlog] = useState([]);
@@ -9,7 +10,7 @@ export default function MyBlog() {
   useEffect(() => {
     const fetchMyBlog = async () => {
       try {
-        const res = await axios("http://localhost:4001/api/blogs/my-blog", {
+        const res = await axios(`${API_URL}/api/blogs/my-blog`, {
           withCredentials: true,
         });
         if (res.data.success) {
@@ -27,7 +28,7 @@ export default function MyBlog() {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:4001/api/blogs/delete/${id}`, {
+      .delete(`${API_URL}/api/blogs/delete/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

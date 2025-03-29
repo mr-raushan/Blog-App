@@ -5,6 +5,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
+import { API_URL } from "../utils";
 
 export default function Navbar() {
   const { profile, isAuthenticated } = useAuth();
@@ -15,7 +16,7 @@ export default function Navbar() {
 
   const logOutHandler = async () => {
     try {
-      const res = await axios.get("http://localhost:4001/api/users/logout", {
+      const res = await axios.get(`${API_URL}/api/users/logout`, {
         withCredentials: true,
       });
       if (res.data.success) {

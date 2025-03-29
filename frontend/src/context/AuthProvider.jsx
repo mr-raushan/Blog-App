@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { API_URL } from "../utils";
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
@@ -13,15 +14,12 @@ export default function AuthProvider({ children }) {
         let token = localStorage.getItem("jwt");
         console.log(token);
         // if (token) {}
-        const res = await axios.get(
-          "http://localhost:4001/api/users/my-profile",
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          }
-        );
+        const res = await axios.get(`${API_URL}/api/users/my-profile`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
         // console.log(res);
         setProfile(res.data);
         setIsAuthenticated(true);
@@ -32,12 +30,9 @@ export default function AuthProvider({ children }) {
 
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:4001/api/blogs/all-blogs",
-          {
-            withCredentials: true,
-          }
-        );
+        const res = await axios.get(`${API_URL}/api/blogs/all-blogs`, {
+          withCredentials: true,
+        });
         console.log("fetch blogs ka data", res.data.blogs);
         setBlogs(res.data?.blogs);
       } catch (error) {

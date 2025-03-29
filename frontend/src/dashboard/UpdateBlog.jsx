@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { API_URL } from "../utils";
 
 export default function UpdateBlog() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function UpdateBlog() {
     const fetchBlog = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4001/api/blogs/single-blog/${id}`,
+          `${API_URL}/api/blogs/single-blog/${id}`,
 
           {
             withCredentials: true,
@@ -61,7 +62,7 @@ export default function UpdateBlog() {
     formData.append("blogImage", blogImage);
     try {
       const { data } = await axios.put(
-        `http://localhost:4001/api/blogs/update/${id}`,
+        `${API_URL}/api/blogs/update/${id}`,
         formData,
         {
           withCredentials: true,

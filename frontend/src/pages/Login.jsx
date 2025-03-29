@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { API_URL } from "../utils";
 
 export default function Login() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
@@ -28,16 +29,12 @@ export default function Login() {
     formData.append("role", input.role);
 
     try {
-      const res = await axios.post(
-        "http://localhost:4001/api/users/login",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(`${API_URL}/api/users/login`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
 
       //   console.log(res);
       toast.success(res.data.message);

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { API_URL } from "../utils";
 
 export default function Signup() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
@@ -40,16 +41,12 @@ export default function Signup() {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:4001/api/users/register",
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await axios.post(`${API_URL}/api/users/register`, formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log(res);
       toast.success("User created successfully");
