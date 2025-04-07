@@ -62,8 +62,6 @@ export default function CreateBlog() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  // 07:25:00
-
   return (
     <div>
       <div
