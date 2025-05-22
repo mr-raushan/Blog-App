@@ -49,13 +49,18 @@ export const register = async (req, res) => {
       });
     }
 
-    const cloudResponse = await cloudinary.uploader.upload(photo.tempFilePath);
+    const cloudResponse = await cloudinary.uploader.upload(
+      photo.tempFilePath || photo.tempFilePath || photo.path || photo
+    );
     if (!cloudResponse || cloudResponse.error) {
       return res.status(500).json({
         message: "Error uploading photo to cloudinary",
         success: false,
       });
     }
+
+    console.log("photo file:", photo);
+    console.log("tempFilePath:", photo.tempFilePath);
 
     const hashedPassword = await bcrypt.hash(password, 10);
 

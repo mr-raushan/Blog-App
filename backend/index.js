@@ -17,6 +17,9 @@ const MONGO_URL = process.env.MONGO_URI;
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const allowedOrigins = [
   "http://localhost:5173", //local react
   "https://blog-app-brown-psi.vercel.app", //deployed frontend
@@ -29,12 +32,15 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-  })
-);
+
+app.use(fileUpload({ useTempFiles: true }));
+
+// app.use(
+//   fileUpload({
+//     useTempFiles: true,
+//     tempFileDir: "/tmp/",
+//   })
+// );
 
 // DB Code
 try {
