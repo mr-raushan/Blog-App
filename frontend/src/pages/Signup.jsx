@@ -42,10 +42,10 @@ export default function Signup() {
 
     try {
       const res = await axios.post(`${API_URL}/api/users/register`, formData, {
-        withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        withCredentials: true,
       });
 
       console.log(res);

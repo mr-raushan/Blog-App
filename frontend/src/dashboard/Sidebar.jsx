@@ -49,9 +49,8 @@ export default function Sidebar({ setComponent }) {
         <CiMenuBurger className="text-2xl" />
       </div>
       <div
-        className={`w-64 h-full shadow-lg fixed top-0 left-0 py-10 bg-gray-50 transition-transform duration-300 transform sm:translate-x-0 ${
-          open ? "translate-x-0" : "-translate-x-full mr-5"
-        }`}
+        className={`w-64 h-full shadow-lg fixed top-0 left-0 py-10 bg-gray-50 transition-transform duration-300 transform sm:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full mr-5"
+          }`}
       >
         <div
           className="sm:hidden absolute top-4 right-4 text-xl cursor-pointer"

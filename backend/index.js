@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173", //local react
-  process.env.CLIENT_URL, //deployed frontend
+  "https://blog-app-brown-psi.vercel.app", //deployed frontend
 ];
 
 app.use(
