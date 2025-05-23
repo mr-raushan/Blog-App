@@ -19,6 +19,7 @@ app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 
 const allowedOrigins = [
   "http://localhost:5173", //local react
@@ -32,8 +33,6 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
-app.use(fileUpload({ useTempFiles: true }));
 
 // app.use(
 //   fileUpload({

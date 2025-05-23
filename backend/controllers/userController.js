@@ -5,6 +5,8 @@ import createTokenAndSaveCookies from "../jwt/AuthToken.js";
 
 export const register = async (req, res) => {
   try {
+    console.log("req.files:", req.files);
+    console.log("req.body:", req.body);
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).json({
         message: "No files were uploaded.",
@@ -49,9 +51,7 @@ export const register = async (req, res) => {
       });
     }
 
-    const cloudResponse = await cloudinary.uploader.upload(
-      photo.tempFilePath || photo.tempFilePath || photo.path || photo
-    );
+    const cloudResponse = await cloudinary.uploader.upload(photo.tempFilePath);
     if (!cloudResponse || cloudResponse.error) {
       return res.status(500).json({
         message: "Error uploading photo to cloudinary",

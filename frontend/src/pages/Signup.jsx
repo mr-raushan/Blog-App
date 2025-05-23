@@ -65,7 +65,16 @@ export default function Signup() {
       });
     } catch (error) {
       console.log("error occured while signup", error);
-      toast.error("cannot sign up");
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message &&
+        error.response.data.message.includes("duplicate key error")
+      ) {
+        toast.error("Phone number already registered");
+      } else {
+        toast.error("Cannot sign up");
+      }
     }
   };
 
@@ -161,15 +170,16 @@ export default function Signup() {
 
           <div className="flex items-center gap-2 my-2">
             <div className="photo w-20 h-16 mr-4">
-              <img
-                src={input.photoPreview}
-                alt="User Avatar"
-                className="object-cover w-full h-full rounded-full"
-              />
+              {input.photoPreview && (
+                <img
+                  src={input.photoPreview}
+                  alt="User Avatar"
+                  className="object-cover w-full h-full rounded-full"
+                />
+              )}
             </div>
             <input
               type="file"
-              name="photoPreview"
               onChange={changePhotoHandler}
               className="border w-full p-2 rounded-md mt-2 focus:outline-none"
             />
