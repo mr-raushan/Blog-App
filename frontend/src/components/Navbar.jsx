@@ -9,7 +9,7 @@ import { API_URL } from "../utils";
 
 export default function Navbar() {
   const { profile, isAuthenticated } = useAuth();
-  console.log(profile?.user);
+  // console.log(profile?.user);
 
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();

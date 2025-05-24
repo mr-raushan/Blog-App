@@ -11,8 +11,8 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        let token = localStorage.getItem("jwt");
-        console.log(token);
+        // let token = localStorage.getItem("jwt");
+        // console.log(token);
         // if (token) {}
         const res = await axios.get(`${API_URL}/api/users/my-profile`, {
           headers: {
@@ -33,7 +33,7 @@ export default function AuthProvider({ children }) {
         const res = await axios.get(`${API_URL}/api/blogs/all-blogs`, {
           withCredentials: true,
         });
-        console.log("fetch blogs ka data", res.data.blogs);
+        // console.log("fetch blogs ka data", res.data.blogs);
         setBlogs(res.data?.blogs);
       } catch (error) {
         console.log("error fetching blog from auth provider file ", error);

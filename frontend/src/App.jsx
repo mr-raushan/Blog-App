@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -17,14 +18,14 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   const { blogs, isAuthenticated } = useAuth();
-  console.log(blogs);
+  // console.log(blogs);
   const location = useLocation();
   const hideNavbarFooter = ["/dashboard", "/login", "/signup"].includes(
     location.pathname
   );
 
   const token = localStorage.getItem("jwt");
-  console.log(token);
+  // console.log(token);
 
   return (
     <div>
