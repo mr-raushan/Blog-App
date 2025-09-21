@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
@@ -91,7 +91,7 @@ export default function Signup() {
 
   return (
     <div
-      className="flex items-center justify-center py-8 border bg-white max-w-xl rounded-md 
+      className="flex items-center justify-center py-8 border bg-white max-w-xl rounded-md
     mx-auto mt-10 border-gray-300 flex-col"
     >
       <form onSubmit={submitHandler} className="mt-10">

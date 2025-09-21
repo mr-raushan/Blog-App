@@ -54,7 +54,7 @@ export default function Login() {
 
   return (
     <div
-      className="flex items-center justify-center py-8 border bg-white max-w-xl rounded-md 
+      className="flex items-center justify-center py-8 border bg-white max-w-xl rounded-md
     mx-auto mt-20 border-gray-300 flex-col"
     >
       <form onSubmit={submitHandler} className="mt-10">

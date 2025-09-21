@@ -32,12 +32,7 @@ function App() {
       {!hideNavbarFooter && <Navbar />}
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            isAuthenticated === true ? <Home /> : <Navigate to={"/login"} />
-          }
-        />
+        <Route path="/" element=<Home /> />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/creators" element={<Creators />} />
         <Route path="/about" element={<About />} />
@@ -60,3 +55,7 @@ function App() {
 }
 
 export default App;
+
+//  element={
+//             isAuthenticated === true ? <Home /> : <Navigate to={"/login"} />
+//           }
